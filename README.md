@@ -25,32 +25,32 @@
 <h4> Example </h4>
 <b>- 가비지 컬렉션으로도 메모리 leak이 발생될 때.</b><br>
 <code>
-public class MyClass {
-    private List<String> list = new ArrayList<>();
-    public void addToMyList(String str) {
-        list.add(str);
-    }
-    public static void main(String[] args) {
-        MyClass myClass = new MyClass();
-        for (int i = 0; i < 1000000; i++) {
-            myClass.addToMyList("string" + i);
+    public class MyClass {
+        private List<String> list = new ArrayList<>();
+        public void addToMyList(String str) {
+            list.add(str);
+        }
+        public static void main(String[] args) {
+            MyClass myClass = new MyClass();
+            for (int i = 0; i < 1000000; i++) {
+                myClass.addToMyList("string" + i);
+            }
         }
     }
-}
 </code>
 <b>- list 변수를 지역 변수로 선언하여 메모리 누수를 방지.</b><br>
 <code>
-public class MyClass {
-    public void addToMyList(List<String> list, String str) {
-        list.add(str);
-    }
-    public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        MyClass myClass = new MyClass();
-        for (int i = 0; i < 1000000; i++) {
-            myClass.addToMyList(list, "string" + i);
+    public class MyClass {
+        public void addToMyList(List<String> list, String str) {
+            list.add(str);
+        }
+        public static void main(String[] args) {
+            List<String> list = new ArrayList<>();
+            MyClass myClass = new MyClass();
+            for (int i = 0; i < 1000000; i++) {
+                myClass.addToMyList(list, "string" + i);
+            }
         }
     }
-}
 </code>
 
