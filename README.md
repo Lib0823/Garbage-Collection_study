@@ -27,11 +27,9 @@
 <code>
 public class MyClass {
     private List<String> list = new ArrayList<>();
-
     public void addToMyList(String str) {
         list.add(str);
     }
-
     public static void main(String[] args) {
         MyClass myClass = new MyClass();
         for (int i = 0; i < 1000000; i++) {
